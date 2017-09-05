@@ -8,7 +8,7 @@ class Matrix:
         self.rows = rows
         self.cols = cols
         self.buildMatrix(values)
-    
+        
     def buildMatrix(self, values):
         self.matrix = []
         for row in range(self.rows):
@@ -18,5 +18,21 @@ class Matrix:
     def getMatrixValue(self):
         return self.matrix
         
+    def setMatrixValue(self, matrix):
+        self.matrix = matrix
+        
     def multiply(self, matrix):
-        return matrix
+        matrixA = self.matrix
+        matrixB = matrix.getMatrixValue()
+        returnMatrix = Matrix(len(matrixA), 
+                    len(matrixB[0]), ['-'] * (len(matrixA) * len(matrixB[0])))
+        matrixC = returnMatrix.getMatrixValue()
+        
+        for row in range(len(matrixA)):
+            for col in range(len(matrixB[0])):
+                matrixC[row][col] = 0
+                for mid in range(len(matrixA[0])):
+                    matrixC[row][col] = matrixC[row][col] + matrixA[row][mid] * matrixB[mid][col]
+              
+        returnMatrix.setMatrixValue(matrixC)
+        return returnMatrix
