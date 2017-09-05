@@ -36,6 +36,15 @@ class MatrixTest(unittest.TestCase):
         actualMatrixValue = self.matrix2x2.multiply(matrixToMultiply).getMatrixValue()
         
         self.assertEqual(actualMatrixValue, expectedMatrixValue)
+        
+    def testMultiply3x3(self):
+        matrixToMultiply = Matrix.Matrix(3, 1, [5, 17, 14])
+        expectedMatrixValue = [[41],
+                               [63],
+                               [55]]
+        actualMatrixValue = self.matrix3x3.multiply(matrixToMultiply).getMatrixValue()
+        
+        self.assertEqual(actualMatrixValue, expectedMatrixValue)
 
 if __name__ == '__main__':
     unittest.main()
