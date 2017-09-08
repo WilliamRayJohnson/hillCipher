@@ -55,6 +55,18 @@ class MatrixTest(unittest.TestCase):
         matrixB = Matrix.Matrix(2, 2, [1,2,3,4])
         
         self.assertEqual(matrixA, matrixB)
+        
+    def testCalcAdjugateMatrix2x2(self):
+        expectedAdjugateMatrix = Matrix.Matrix(2,2,[3,-19,-8,7])
+        actualAdjugateMatrix = self.matrix2x2.calcAdjugateMatrix()
+        
+        self.assertEqual(actualAdjugateMatrix.getMatrixValue(), expectedAdjugateMatrix.getMatrixValue())
+        
+    def testCalcAdjugateMatrix3x3(self):
+        expectedAdjugateMatrix = Matrix.Matrix(2,2,[3,-19,-8,7])
+        actualAdjugateMatrix = self.matrix3x3.calcAdjugateMatrix()
+        
+        self.assertEqual(actualAdjugateMatrix.getMatrixValue(), expectedAdjugateMatrix.getMatrixValue())
 
 if __name__ == '__main__':
     unittest.main()

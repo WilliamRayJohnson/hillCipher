@@ -42,3 +42,10 @@ class Matrix:
               
         returnMatrix.setMatrixValue(matrixC)
         return returnMatrix
+        
+    def calcAdjugateMatrix(self):
+        if self.getSize() == '2x2':
+            adjugateMatrix = Matrix(2,2,[self.matrix[1][1], -self.matrix[0][1], -self.matrix[1][0], self.matrix[0][0]])
+            
+            
+        return adjugateMatrix
