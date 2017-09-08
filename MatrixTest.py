@@ -49,6 +49,12 @@ class MatrixTest(unittest.TestCase):
     def testGetSize(self):
         self.assertEqual(self.matrix2x2.getSize(), "2x2")
         self.assertEqual(self.matrix3x3.getSize(), "3x3")
+        
+    def testEquals(self):
+        matrixA = Matrix.Matrix(2, 2, [1,2,3,4])
+        matrixB = Matrix.Matrix(2, 2, [1,2,3,4])
+        
+        self.assertEqual(matrixA, matrixB)
 
 if __name__ == '__main__':
     unittest.main()

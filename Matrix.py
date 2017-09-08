@@ -9,6 +9,9 @@ class Matrix:
         self.cols = cols
         self.buildMatrix(values)
         
+    def __eq__(self, other):
+        return self.getMatrixValue() == other.getMatrixValue()
+        
     def buildMatrix(self, values):
         self.matrix = []
         for row in range(self.rows):
