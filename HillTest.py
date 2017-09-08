@@ -12,6 +12,7 @@ class HillTest(unittest.TestCase):
     def setUp(self):
         self.key2x2 = Matrix.Matrix(2, 2, [7, 19, 8, 3])
         self.plainText = "test"
+        self.cipherText = "BITT"
         self.cipher = Hill.Hill([7, 19, 8, 3])
         
     def testConvertPlainTextToNumber(self):
@@ -51,6 +52,12 @@ class HillTest(unittest.TestCase):
         actualEncryption = wikiCipher.encrypt("help")
         
         self.assertEqual(actualEncryption, expectedEncryption)
+        
+    def testDecrypt(self):
+        expectedDecryption = "test"
+        actualDecryption = self.cipher.decrypt(self.cipherText)
+        
+        self.assertEqual(actualDecryption, expectedDecryption)
         
         
 if __name__ == '__main__':
