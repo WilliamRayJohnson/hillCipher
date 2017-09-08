@@ -24,6 +24,14 @@ class Hill:
             
         return plainTextNumbers
         
+    def convertToText(self, numbers):
+        text = ''
+        
+        for num in numbers:
+            text = text + chr(num + self.asciiOffset)
+            
+        return text
+        
     def splitPlainTextIntoMatrices(self, plainText):
         plainTextNumbers = self.convertToNumbers(plainText)
         matrices = []
@@ -38,5 +46,15 @@ class Hill:
             
         return matrices
         
+    def encrypt(self, plainText):
+        plainTextMatrices = self.splitPlainTextIntoMatrices(plainText)
+        cipherTextNumbers = []
         
+        for PTMatrix in plainTextMatrices:
+            multipliedValues = self.key.multiply(PTMatrix).getMatrixValue()
+            for value in multipliedValues:
+                cipherTextNumbers.append(value[0] % 26)
+            
+        cipherText = self.convertToText(cipherTextNumbers)
+        return cipherText.upper()
         

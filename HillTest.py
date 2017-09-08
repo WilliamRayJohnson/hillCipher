@@ -33,6 +33,18 @@ class HillTest(unittest.TestCase):
         
         self.assertEqual(actualMatricies, expectedMatrices)
         
+    def testConvertNumbersToText(self):
+        expectedText = "test"
+        actualText = self.cipher.convertToText([19,4,18,19])
+        
+        self.assertEqual(actualText, expectedText)
+        
+    def testEncrypt(self):
+        expectedEncryption = "BITT"
+        actualEncryption = self.cipher.encrypt(self.plainText)
+        
+        self.assertEqual(actualEncryption, expectedEncryption)
+        
         
 if __name__ == '__main__':
     unittest.main()
