@@ -63,3 +63,15 @@ class Matrix:
             
             
         return adjugateMatrix
+        
+    def calcDeterminant(self):
+        if self.getSize() == '2x2':
+            determinant = self.matrix[0][0] * self.matrix[1][1] - self.matrix[0][1] * self.matrix[1][0]
+        elif self.getSize() == '3x3':
+            A = (self.matrix[1][1] * self.matrix[2][2] - self.matrix[1][2] * self.matrix[2][1])
+            B = -(self.matrix[1][0] * self.matrix[2][2] - self.matrix[1][2] * self.matrix[2][0])
+            C = (self.matrix[1][0] * self.matrix[2][1] - self.matrix[1][1] * self.matrix[2][0])
+            
+            determinant = self.matrix[0][0] * A + self.matrix[0][1] * B + self.matrix[1][0] * C
+            
+        return determinant**-1

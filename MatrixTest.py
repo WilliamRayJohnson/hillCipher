@@ -67,6 +67,15 @@ class MatrixTest(unittest.TestCase):
         actualAdjugateMatrix = self.matrix3x3.calcAdjugateMatrix()
         
         self.assertEqual(actualAdjugateMatrix.getMatrixValue(), expectedAdjugateMatrix.getMatrixValue())
+        
+    def testCalcDeterminant2x2(self):
+        expectedDeterminant = 9**-1
+        actualDeterminant = Matrix.Matrix(2,2,[3,3,2,5]).calcDeterminant()
+        
+        self.assertEqual(actualDeterminant, expectedDeterminant)
+        
+    def testCalcDeterminant3x3(self):
+    
 
 if __name__ == '__main__':
     unittest.main()
