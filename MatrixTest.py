@@ -75,7 +75,10 @@ class MatrixTest(unittest.TestCase):
         self.assertEqual(actualDeterminant, expectedDeterminant)
         
     def testCalcDeterminant3x3(self):
-    
+        expectedDeterminant = 1**-1
+        actualDeterminant = self.matrix3x3.calcDeterminant()
+        
+        self.assertEqual(actualDeterminant, expectedDeterminant)
 
 if __name__ == '__main__':
     unittest.main()

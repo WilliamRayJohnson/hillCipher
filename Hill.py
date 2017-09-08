@@ -57,7 +57,15 @@ class Hill:
             
         cipherText = self.convertToText(cipherTextNumbers)
         return cipherText.upper()
+    
+    def invertNumber(self, number):
+        inversion = 1
         
+        while (number * inversion) % 26 != 1 % 26:
+            inversion += 1
+        
+        return inversion
+    
     def decrypt(self, cipherText):
         cipherTextMatrices = self.splitPlainTextIntoMatrices(cipherText)
         plainTextNumbers = []

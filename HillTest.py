@@ -59,6 +59,12 @@ class HillTest(unittest.TestCase):
         
         self.assertEqual(actualDecryption, expectedDecryption)
         
+    def testInvertNumber(self):
+        expectedInversion = 3
+        actualInversion = self.cipher.invertNumber(9)
+        
+        self.assertEqual(actualInversion, expectedInversion)
+        
         
 if __name__ == '__main__':
     unittest.main()
