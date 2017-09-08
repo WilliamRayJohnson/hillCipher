@@ -3,6 +3,8 @@
 9/4/17
 '''
 
+from fractions import gcd
+
 class Matrix:
     def __init__(self, rows, cols, values):
         self.rows = rows
@@ -46,6 +48,18 @@ class Matrix:
     def calcAdjugateMatrix(self):
         if self.getSize() == '2x2':
             adjugateMatrix = Matrix(2,2,[self.matrix[1][1], -self.matrix[0][1], -self.matrix[1][0], self.matrix[0][0]])
+        elif self.getSize() == '3x3':
+            A = (self.matrix[1][1] * self.matrix[2][2] - self.matrix[1][2] * self.matrix[2][1])
+            B = -(self.matrix[1][0] * self.matrix[2][2] - self.matrix[1][2] * self.matrix[2][0])
+            C = (self.matrix[1][0] * self.matrix[2][1] - self.matrix[1][1] * self.matrix[2][0])
+            D = -(self.matrix[0][1] * self.matrix[2][2] - self.matrix[0][2] * self.matrix[2][1])
+            E = (self.matrix[0][0] * self.matrix[2][2] - self.matrix[0][2] * self.matrix[2][0])
+            F = -(self.matrix[0][0] * self.matrix[2][1] - self.matrix[0][1] * self.matrix[2][0])
+            G = (self.matrix[0][1] * self.matrix[1][2] - self.matrix[0][2] * self.matrix[1][1])
+            H = -(self.matrix[0][0] * self.matrix[1][2] - self.matrix[0][2] * self.matrix[1][0])
+            I = (self.matrix[0][0] * self.matrix[1][1] - self.matrix[0][1] * self.matrix[1][0])
+            
+            adjugateMatrix = Matrix(3,3,[A,D,G,B,E,H,C,F,I])
             
             
         return adjugateMatrix

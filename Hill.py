@@ -59,5 +59,9 @@ class Hill:
         return cipherText.upper()
         
     def decrypt(self, cipherText):
+        cipherTextMatrices = self.splitPlainTextIntoMatrices(cipherText)
+        plainTextNumbers = []
+        
+        
         return "Decrypt is not yet implemented"
         

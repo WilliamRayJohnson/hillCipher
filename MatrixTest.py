@@ -63,7 +63,7 @@ class MatrixTest(unittest.TestCase):
         self.assertEqual(actualAdjugateMatrix.getMatrixValue(), expectedAdjugateMatrix.getMatrixValue())
         
     def testCalcAdjugateMatrix3x3(self):
-        expectedAdjugateMatrix = Matrix.Matrix(2,2,[3,-19,-8,7])
+        expectedAdjugateMatrix = Matrix.Matrix(3,3,[3,-1,-1,-4,2,1,-1,0,1])
         actualAdjugateMatrix = self.matrix3x3.calcAdjugateMatrix()
         
         self.assertEqual(actualAdjugateMatrix.getMatrixValue(), expectedAdjugateMatrix.getMatrixValue())
