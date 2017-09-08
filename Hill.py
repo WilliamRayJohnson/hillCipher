@@ -58,3 +58,6 @@ class Hill:
         cipherText = self.convertToText(cipherTextNumbers)
         return cipherText.upper()
         
+    def decrypt(self, cipherText):
+        return "Decrypt is not yet implemented"
+        

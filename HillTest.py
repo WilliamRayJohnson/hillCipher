@@ -45,6 +45,13 @@ class HillTest(unittest.TestCase):
         
         self.assertEqual(actualEncryption, expectedEncryption)
         
+    def testEncryptWithWikipediaExample(self):
+        wikiCipher = Hill.Hill([3,3,2,5])
+        expectedEncryption = ("HIAT")
+        actualEncryption = wikiCipher.encrypt("help")
+        
+        self.assertEqual(actualEncryption, expectedEncryption)
+        
         
 if __name__ == '__main__':
     unittest.main()
