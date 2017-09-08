@@ -17,6 +17,9 @@ class Matrix:
          
     def getMatrixValue(self):
         return self.matrix
+    
+    def getSize(self):
+        return str(self.rows) + "x" + str(self.cols)
         
     def setMatrixValue(self, matrix):
         self.matrix = matrix
