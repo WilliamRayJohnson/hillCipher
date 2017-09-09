@@ -9,16 +9,12 @@ import Hill
 
 def main():
     parser = argparse.ArgumentParser(description='Encrypt or decrpyt a message using Hill Cipher')
-    parser.add_argument('-k', default=[], nargs='+', type=int, 
-                        help="The key to be used in the cipher")
+    parser.add_argument('-k', required=True, nargs='+', type=int, 
+                        help="The key to be used in the cipher. Input in sequence separated by spaces.")
     args = parser.parse_args()
-    if args.k == []:
-        key = input("What is your key?: ")
-    else:
-        key = args.k
+    key = args.k
         
     cipher = Hill.Hill(key)
-    print(key)
     
     option = input("Would you like to encrypt or decrypt a message?: ")
     message = input("What is the message you would like to " + option + "?: ")

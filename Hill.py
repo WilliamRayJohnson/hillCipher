@@ -14,6 +14,7 @@ class Hill:
             self.key = Matrix.Matrix(2, 2, keyValues)
         elif len(keyValues) == 9:
             self.key = Matrix.Matrix(3, 3, keyValues)
+        self.calcDecryptionKey()
     
     def convertToNumbers(self, plainText):
         plainText = plainText.lower().replace(" ", "")
@@ -37,7 +38,7 @@ class Hill:
         matrices = []
         
         if len(plainTextNumbers) % self.key.rows != 0:
-            for padding in range(len(plainTextNumbers) % self.key.rows):
+            for padding in range(self.key.rows - (len(plainTextNumbers) % self.key.rows)):
                 plainTextNumbers.append(self.paddingValue)
                 
         for slice in range(len(plainTextNumbers)//self.key.rows):
@@ -65,11 +66,31 @@ class Hill:
             inversion += 1
         
         return inversion
+        
+    def calcDecryptionKey(self):
+        determinate = self.key.calcDeterminant()
+        adjugate = self.key.calcAdjugateMatrix()
+        decryptKeyValues = []
+        
+        determinate = self.invertNumber(determinate**-1)
+        for row in adjugate.getMatrixValue():
+            for value in row:
+                decryptKeyValues.append(((value + 26) * determinate) % 26) 
+                
+        self.decryptKey = Matrix.Matrix(self.key.rows, self.key.cols, decryptKeyValues)
+        
+    def getDecryptKey(self):
+        return self.decryptKey
     
     def decrypt(self, cipherText):
         cipherTextMatrices = self.splitPlainTextIntoMatrices(cipherText)
         plainTextNumbers = []
         
+        for CTMatrix in cipherTextMatrices:
+            multipliedValues = self.decryptKey.multiply(CTMatrix).getMatrixValue()
+            for value in multipliedValues:
+                plainTextNumbers.append(value[0] % 26)
         
-        return "Decrypt is not yet implemented"
+        plainText = self.convertToText(plainTextNumbers)
+        return plainText.lower()
         
